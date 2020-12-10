@@ -2,3 +2,33 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+/*Custon Colors*/
+$main : #0D703A;
+$secondary: #7CBF4B;
+$ternary: #79C15D;
+
+/*backgrounds*/
+.bg-main{
+  background-color: $main;
+}
+
+.bg-secondary{
+  background-color: $secondary;
+}
+
+.bg-ternary{
+  background-color: $ternary;
+}
+/*text*/
+.text-main{
+  color: $main;
+}
+
+.text-secondary{
+  color: $secondary;
+}
+
+.text-ternary{
+  color: $ternary;
+}
