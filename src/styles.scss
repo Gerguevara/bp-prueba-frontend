@@ -2,11 +2,17 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
-
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
 /*Custon Colors*/
 $main : #0D703A;
 $secondary: #7CBF4B;
 $ternary: #79C15D;
+
+/*General Setup*/
+body, html {
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+}
 
 /*backgrounds*/
 .bg-main{
@@ -31,4 +37,8 @@ $ternary: #79C15D;
 
 .text-ternary{
   color: $ternary;
+}
+/*buttoms*/
+.pill{
+border-radius: 26px;
 }
