@@ -1,0 +1,38 @@
+<ng-sidebar-container>
+  <!-- A sidebar -->
+  <ng-sidebar [(opened)]="opened" mode="push">
+
+    <div class="sidebar-content px-5">
+      <div class="profile d-flex justify-content-center align-items-center">
+        <div class="mt-5 mb-4">
+          <img src="assets/img/profile.png" alt="..." class="profile rounded-circle">
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center">
+        <!-- sidecontent -->
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item mt-4" *ngFor="let link of links">
+            <a [routerLink]=link.url  routerLinkActive="active">
+              <span class="material-icons mt-1">{{link.icon}}</span>
+              {{link.legend}}
+            </a>
+          </li>
+        </ul>
+        <!-- sidecontent -->
+      </div>
+    </div>
+
+  </ng-sidebar>
+  <!-- Page content -->
+  <div ng-sidebar-content>
+    <app-sidenav [isOpened]="opened" (sideControler)="opened=$event"></app-sidenav>
+    <app-breadcrum></app-breadcrum>
+    <div class="container-fluid">
+       <main class="card dashboar-main-container">
+        <router-outlet></router-outlet>
+       </main>
+    </div>
+  </div>
+
+  <ng-sidebar-container>

@@ -1,0 +1,54 @@
+$primary:  #212121;
+$ternary: #79C15D;
+$bg: #e1f7e7;
+ng-sidebar-container{
+  height: 100vh;
+  width: 100%;
+ }
+
+ a{
+   text-decoration: none;
+   color: white;
+ }
+
+.sidebar-content{
+  background:$primary ;
+  color: white;
+  width: auto;
+  height: 100%;
+
+  .list-group{
+    width: 100%;
+  }
+
+  .list-group-item{
+    background:$primary;
+    border: none;
+    font-size: 1.75rem;
+
+    :hover{
+      color:$ternary;
+      cursor: pointer;
+    }
+  }
+
+  .list-group-item_active{
+    color: $ternary;
+  }
+
+  .profile{
+    height: 180px;
+    width: auto;
+  }
+
+.dashboar-main-container{
+  height: 100%;
+}
+}
+
+.active{
+  color: $ternary;
+  :hover{
+    cursor: none;
+  }
+ }
