@@ -1,1 +1,58 @@
-<p>clientes works!</p>
+<div>
+  <!-- Messages -->
+  <div class="alert alert-success d-flex justify-content-center" role="alert">
+    No hay Clientes Agregados aun.
+  </div>
+  <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="error">
+    Ocurrio un erro en Servidor Por favor intenta mas tarde.
+  </div>
+  <!-- Messages -->
+  <!-- header -->
+  <header class="d-md-flex justify-content-between my-4">
+    <div class="ml-4">
+      <p class="h3"> Mi Directorio de Clientes</p>
+    </div>
+
+    <div class="mt-3 mb-3 px-3">
+      <input class="form-control" placeholder="Buscar Cliente..." type="text" name="searchTerm" [(ngModel)]="termino"
+        (keyup)="buscar()" />
+    </div>
+
+    <div class=" ml-3 mr-md-5">
+      <button class=" btn btn-success pill">Agregar Nuevo Cliente</button>
+    </div>
+  </header>
+  <!-- header -->
+  <!-- pages -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes|paginate: {itemsPerPage:8, currentPage:p}">
+        <th scope="row">{{ cliente.id | number }}</th>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.apellidos }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- pages -->
+  <!-- pagination -->
+  <div class="d-flex justify-content-center p-2">
+    <pagination-controls
+    class="my-pagination"
+    (pageChange)="p = $event"
+     (pageBoundsCorrection)="p = $event"
+      previousLabel="Anterior"
+      nextLabel="Siguiente"
+      autoHide="true"
+      responsive="true"
+      >
+    </pagination-controls>
+  </div>
+  <!-- pagination -->
+</div>
