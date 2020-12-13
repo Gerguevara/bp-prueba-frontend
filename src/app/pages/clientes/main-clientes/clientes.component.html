@@ -26,12 +26,14 @@
   </header>
   <!-- header -->
   <!-- pages -->
+  <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -39,9 +41,16 @@
         <th scope="row">{{ cliente.id }}</th>
         <td>{{ cliente.nombre }}</td>
         <td>{{ cliente.apellidos }}</td>
+        <td>
+            <button class="btn-ico text-danger"><span class="material-icons">delete</span></button>
+            <a [routerLink]="['/mi-tienda/clientes/',cliente.id]" class="btn-ico text-main ml-3" >
+              <span class="material-icons">create</span>
+             </a>
+        </td>
       </tr>
     </tbody>
   </table>
+</div>
   <!-- pages -->
   <!-- pagination -->
   <div class="d-flex justify-content-center p-2">

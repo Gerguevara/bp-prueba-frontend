@@ -11,9 +11,9 @@ const clietesRoutes: Routes = [
     component: ClientesComponent,
   },
   {
-    path: 'cliente/id',
+    path: 'clientes/:id',
     component: DetalleClienteComponent
   },
-  ]
+];
 
 export const CLIENTES_ROUTES = RouterModule.forChild(clietesRoutes);
