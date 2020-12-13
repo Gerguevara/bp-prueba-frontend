@@ -3,12 +3,17 @@ import { PRODUCTOS_ROUTES } from './productos.routes';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap/modal/modal.module';
+import { ModalFormComponent } from './modal-form/modal-form.component';
 
 
 
 @NgModule({
-  declarations: [ ProductosComponent, DetalleProductoComponent],
-  imports: [CommonModule, PRODUCTOS_ROUTES],
+  declarations: [ ProductosComponent, DetalleProductoComponent, ModalFormComponent],
+  imports: [CommonModule, FormsModule, PRODUCTOS_ROUTES, NgxPaginationModule, NgbModalModule,
+             ReactiveFormsModule],
   exports: [ ProductosComponent, DetalleProductoComponent],
 })
 export class ProductoModule { }
