@@ -13,9 +13,9 @@
       <p class="h3"> Mi Directorio de Clientes</p>
     </div>
 
-    <div class="mt-3 mb-3 px-3">
-      <input class="form-control" placeholder="Buscar Cliente..." type="text" name="searchTerm" [(ngModel)]="termino"
-        (keyup)="buscar()" />
+    <div class="mt-md-3 mb-3 px-3 w-50">
+      <input class="form-control pill" placeholder="Nombre..." type="text" name="searchTerm"
+       id="buscar" [(ngModel)]="termino" (keyup)="buscar()" />
     </div>
 
     <div class=" ml-3 mr-md-5">
@@ -25,8 +25,8 @@
     </div>
   </header>
   <!-- header -->
-  <!-- pages -->
-  <div class="table-responsive">
+  <!-- pages table -->
+  <div class="table-responsive px-5" *ngIf="clientes.length>=1">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -42,8 +42,11 @@
         <td>{{ cliente.nombre }}</td>
         <td>{{ cliente.apellidos }}</td>
         <td>
-            <button class="btn-ico text-danger"><span class="material-icons">delete</span></button>
-            <a [routerLink]="['/mi-tienda/clientes/',cliente.id]" class="btn-ico text-main ml-3" >
+            <button class="btn-ico text-danger" (click)="deleteCliente(cliente.id)">
+              <span class="material-icons">delete</span>
+            </button>
+
+            <a [routerLink]="['/mi-tienda/clientes/',cliente.id]" class="btn-ico text-main ml-md-3" >
               <span class="material-icons">create</span>
              </a>
         </td>
@@ -51,7 +54,7 @@
     </tbody>
   </table>
 </div>
-  <!-- pages -->
+  <!-- pages table -->
   <!-- pagination -->
   <div class="d-flex justify-content-center p-2">
     <pagination-controls

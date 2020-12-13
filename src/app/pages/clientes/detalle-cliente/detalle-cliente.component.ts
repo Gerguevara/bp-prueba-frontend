@@ -2,7 +2,7 @@ import { Cliente } from './../../../models/clientes';
 import { ClientesService } from './../clientes.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -11,24 +11,62 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetalleClienteComponent implements OnInit {
 
-  cliente: Cliente | undefined;
-
-  constructor(private clienteService: ClientesService, private router: ActivatedRoute) { }
+  cliente: Cliente = { nombre: '', apellidos: '', id: '' };
+  form!: FormGroup;
+  error = false;
+  id = '';
+  constructor(private clienteService: ClientesService, private router: ActivatedRoute,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.router.params.subscribe(params => {
-      console.log('id pasado', params.id);
-      this.getcliente(params.id);
+     this.id = params.id;
+     this.getcliente(params.id);
     });
+    this.crearForm();
   }
 
   getcliente(id: string): void {
     this.clienteService.getCliente(id).subscribe((data: Cliente) => {
-      console.log('data', data);
       this.cliente = data;
-      console.log('cliente', this.cliente);
     });
   }
 
+  crearForm(): void {
+    this.form = this.fb.group({
+      nombre: [this.cliente.nombre, [Validators.required, Validators.minLength(2)]],
+      apellidos: [this.cliente.apellidos, [Validators.required, Validators.minLength(2)]]
+    });
+  }
+
+
+  guardar(): void {
+    if (!this.form.invalid) {
+      this.clienteService.editar(this.id, this.form.value).subscribe((resp: any) => {
+        this.getcliente(resp.id);
+      });
+      alert('Actualizado');
+    } else {
+      this.setError();
+    }
+  }
+
+  // getters validators
+  // tslint:disable-next-line: typedef
+  get nombreNoValido() {
+    return this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched;
+  }
+
+  // tslint:disable-next-line: typedef
+  get apellidoNoValido() {
+    return this.form.get('apellidos')?.invalid && this.form.get('apellidos')?.touched;
+  }
+
+  setError(): void {
+    this.error = true;
+    setTimeout(() => {
+      this.error = false;
+    }, 5000);
+  }
 
 }

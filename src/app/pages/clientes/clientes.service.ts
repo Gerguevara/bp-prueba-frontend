@@ -16,7 +16,6 @@ export class ClientesService {
   }
 
   getCliente(id: string) {
-    console.log('url', `${environment.endpoint_clientes}/${id}`);
     return this.http.get<Cliente>(`${environment.endpoint_clientes}/${id}`);
   }
 
@@ -29,6 +28,12 @@ export class ClientesService {
     return this.http.post(environment.endpoint_clientes, cliente);
   }
 
+  editar(id: string, cliente: Cliente) {
+    return this.http.put<Cliente>(`${environment.endpoint_clientes}/${id}`, cliente);
+  }
 
+  borrar(id: string) {
+    return this.http.delete(`${environment.endpoint_clientes}/${id}`);
+  }
 
 }

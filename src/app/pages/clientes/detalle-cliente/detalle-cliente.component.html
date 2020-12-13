@@ -4,19 +4,18 @@
       <div class="profile d-flex justify-content-center">
         <img src="assets/img/profile.png" alt="..." class=" rounded-circle" height="300px">
       </div>
-
+      <div class="d-flex justify-content-center mt-5">
+        <p class="h4"> Cliente: {{cliente.nombre}} {{cliente.apellidos}} </p>
+      </div>
   </div>
-
-
-
 <div class="col col-md-4 offset-md-1 my-5">
-  <p class="h4">Detalle de cliente</p>
-      <form id="CreateForm border">
+  <p class="h4">Editar de cliente</p>
+      <form id="CreateForm border" [formGroup]="form" (ngSubmit)="guardar()" id="CreateForm">
         <div class="form-group">
           <label for="exampleInputEmail1">Nombre Del Cliente *</label>
           <input type="text" class="form-control pill" id="nombre" name="nombre"
-           placeholder="Nombre Del Cliente"  >
-          <p class="text-danger ml-1">
+           placeholder="Nombre Del Cliente" formControlName="nombre" >
+          <p class="text-danger ml-1" *ngIf="nombreNoValido">
             Este campo es requerido
           </p>
         </div>
@@ -24,16 +23,20 @@
         <div class="form-group">
           <label for="exampleInputEmail1">Apellido Del Cliente *</label>
           <input type="text" class="form-control pill" id="apellidos" name="apellido"
-           placeholder="Apellido Del Cliente">
-          <p class="text-danger ml-1">
+           placeholder="Apellido Del Cliente" formControlName="apellidos">
+          <p class="text-danger ml-1"  *ngIf="apellidoNoValido">
             Este campo es requerido
           </p>
         </div>
       </form>
-
-    <div class="mt-4 d-flex justify-content-center">
+    <div class="mt-5 d-flex justify-content-center">
       <button type="submit" form="CreateForm" class="btn btn-success pill mr-3">Guardar</button>
       <a href="#/mi-tienda/clientes" class="btn btn-outline-dark pill">Volver</a>
     </div>
+
+    <div class="text-danger mt-5 text-center" role="alert" *ngIf="error">
+      El formulario no esta completo!
+    </div>
+
 </div>
 </div>

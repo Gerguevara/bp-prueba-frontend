@@ -26,7 +26,6 @@ export class ModalFormComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       apellidos: ['', [Validators.required, Validators.minLength(2)]]
     });
-
   }
 
 
@@ -35,18 +34,29 @@ export class ModalFormComponent implements OnInit {
       this.cliente.crear(this.form.value).subscribe((resp: any) => {
         this.activeModal.close('guardado');
     });
+    } else {
+      this.setError();
     }
-
   }
 
   // getters validators
+  // tslint:disable-next-line: typedef
   get nombreNoValido() {
     return this.form.get('nombre')?.invalid && this.form.get('nombre')?.touched;
   }
 
+  // tslint:disable-next-line: typedef
   get apellidoNoValido() {
     return this.form.get('apellido')?.invalid && this.form.get('apellido')?.touched;
   }
+
+  setError(): void {
+    this.error = true;
+    setTimeout(() => {
+      this.error = false;
+    }, 5000);
+  }
+
 
 
 }

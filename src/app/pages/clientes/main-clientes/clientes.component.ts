@@ -39,9 +39,8 @@ export class ClientesComponent implements OnInit {
       });
     }
   }
-
+  // abre modal para crear un cliente
   open(): void {
-
     const modalRef = this.modalService.open(ModalFormComponent, { centered: true });
 
     modalRef.componentInstance.name = 'Gerardo';
@@ -49,6 +48,16 @@ export class ClientesComponent implements OnInit {
     modalRef.result.then((data) => {
       this.fetchClientes();
     });
+  }
+
+ // borrar cliente
+  deleteCliente(id: string | any): void {
+    const respuesta = confirm('¿Deseas Eliminar a estecliente?');
+    if (respuesta) {
+      this.clientesService.borrar(id).subscribe(data => {
+        this.fetchClientes();
+      });
+    }
   }
 
 }
