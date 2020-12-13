@@ -9,11 +9,12 @@ export class ProductosService {
     console.log(' servicio working');
   }
 
-  getClientes(){
+  getProductos() {
+    console.log('url', environment.endpoint_productos);
     return this.http.get<Producto[]>(environment.endpoint_productos);
   }
 
-  getCliente(id: string) {
+  getProducto(id: string) {
     return this.http.get<Producto>(`${environment.endpoint_productos}/${id}`);
   }
 

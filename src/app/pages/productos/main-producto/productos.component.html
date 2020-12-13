@@ -1,1 +1,75 @@
-<p>productos works!</p>
+<div>
+  <!-- Messages -->
+  <div class="alert alert-success d-flex justify-content-center" role="alert" *ngIf="productos.length==0">
+    No hay Productos Agregados aun.
+  </div>
+  <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="error">
+    Ocurrio un erro en Servidor Por favor intenta mas tarde.
+  </div>
+  <!-- Messages -->
+  <!-- header -->
+  <header class="d-md-flex justify-content-between my-4">
+    <div class="ml-4">
+      <p class="h3"> Mi Lista de Productos</p>
+    </div>
+
+    <div class="mt-md-3 mb-3 px-3 w-50">
+      <input class="form-control pill" placeholder="Nombre del Producto" type="text" name="searchTerm"
+       id="buscar" [(ngModel)]="termino" (keyup)="buscar()" />
+    </div>
+
+    <div class=" ml-3 mr-md-5">
+      <button class=" btn btn-success pill" (click)="open()">
+        Agregar Nuevo Producto
+      </button>
+    </div>
+  </header>
+  <!-- header -->
+  <!-- pages table -->
+  <div class="table-responsive px-5" *ngIf="productos.length>=1">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos|paginate: {itemsPerPage:10, currentPage:p}">
+        <th scope="row">{{ producto.id }}</th>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>$ {{ producto.precio }}</td>
+        <td>
+            <button class="btn-ico text-danger" (click)="deleteProducto(producto.id)">
+              <span class="material-icons">delete</span>
+            </button>
+
+            <a [routerLink]="['/mi-tienda/producto/',producto.id]" class="btn-ico text-main ml-md-3" >
+              <span class="material-icons">create</span>
+             </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <!-- pages table -->
+  <!-- pagination -->
+  <div class="d-flex justify-content-center p-2">
+    <pagination-controls
+    class="my-pagination"
+    (pageChange)="p = $event"
+     (pageBoundsCorrection)="p = $event"
+      previousLabel="Anterior"
+      nextLabel="Siguiente"
+      [autoHide]="true"
+      [responsive]="true"
+      >
+    </pagination-controls>
+  </div>
+  <!-- pagination -->
+</div>
+

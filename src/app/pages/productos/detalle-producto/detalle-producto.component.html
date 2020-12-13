@@ -1,1 +1,65 @@
-<p>detalle-producto works!</p>
+<div class="row">
+
+  <div class="col col-md-4 offset-md-1 my-5">
+      <div class="profile d-flex justify-content-center">
+        <img src="assets/img/laptop.jpg" alt="..." class="img-fluid rounded">
+      </div>
+      <div class="d-flex justify-content-center mt-5">
+
+        <ul class="list-group">
+          <li class="list-group-item">
+            <span class="font-weight-bold"> Producto:</span> {{producto.nombre}}
+          </li>
+          <li class="list-group-item"><span class="font-weight-bold"> Descripción:</span>
+            {{producto.descripcion}}
+          </li>
+          <li class="list-group-item"><span class="font-weight-bold"> Precio:</span>
+            $ {{producto.precio}}</li>
+        </ul>
+
+      </div>
+  </div>
+<div class="col col-md-4 offset-md-1 mt-5 mb-5">
+  <p class="h3 font-weight-bold">Editar Producto</p>
+      <form class="mt-4" [formGroup]="form" (ngSubmit)="guardar()" id="CreateForm">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Nombre Del Producto *</label>
+          <input type="text" class="form-control pill" id="nombre" name="nombre" [value]="producto.nombre"
+          placeholder="Nombre Del Producto"  formControlName="nombre"  >
+         <p class="text-danger ml-1" *ngIf="nombreNoValido">
+           Este campo es requerido
+         </p>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Descripcion del Producto*</label>
+          <textarea class="form-control"  id="descripcion" rows="2" name="descripcion"  [value]="producto.descripcion"
+          placeholder="Agrega una breve descripción de al menos 8 caracteres" formControlName="descripcion">
+          </textarea>
+          <p class="text-danger ml-1" *ngIf="descripcionValida">
+            Este campo es requerido
+          </p>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Precio del Producto*</label>
+            <input type="number" class="form-control pill w-25" id="precio" name="precio"  [value]="producto.precio"
+             placeholder="0.00"  formControlName="precio"  >
+            <p class="text-danger ml-1" *ngIf="precioNoValido">
+              El precio es necesario.
+            </p>
+          </div>
+
+        </div>
+      </form>
+    <div class="mt-5 d-flex justify-content-center">
+      <button type="submit" form="CreateForm" class="btn btn-success pill mr-3">Guardar</button>
+      <a href="#/mi-tienda/productos" class="btn btn-outline-dark pill">Volver</a>
+    </div>
+
+    <div class="text-danger mt-5 text-center" role="alert" *ngIf="error">
+      El formulario no esta completo!
+    </div>
+
+</div>
+</div>
+
