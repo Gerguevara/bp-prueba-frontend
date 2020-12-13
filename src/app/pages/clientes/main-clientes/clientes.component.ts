@@ -1,6 +1,8 @@
+import { ModalFormComponent } from './../modal-form/modal-form.component';
 import { Cliente } from './../../../models/clientes';
 import { ClientesService } from './../clientes.service';
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-clientes',
@@ -13,7 +15,7 @@ export class ClientesComponent implements OnInit {
   termino = '';
   error = false;
   p = 1;
-  constructor(private clientesService: ClientesService) { }
+  constructor(private clientesService: ClientesService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.fetchClientes();
@@ -27,7 +29,7 @@ export class ClientesComponent implements OnInit {
     });
   }
 
-// fetch de cliente que cumpla con el parametro nombre
+  // fetch de cliente que cumpla con el parametro nombre
   buscar(): void {
     if (this.termino.trim().length === 0) {
       this.fetchClientes();
@@ -36,6 +38,17 @@ export class ClientesComponent implements OnInit {
         this.clientes = data;
       });
     }
+  }
+
+  open(): void {
+
+    const modalRef = this.modalService.open(ModalFormComponent, { centered: true });
+
+    modalRef.componentInstance.name = 'Gerardo';
+
+    modalRef.result.then((data) => {
+      this.fetchClientes();
+    });
   }
 
 }

@@ -19,6 +19,9 @@ export class ClientesService {
     return this.http.get<Cliente[]>(`${environment.endpoint_clientes}?nombre=${termino}`);
   }
 
+  crear(cliente: Cliente) {
+    return this.http.post(environment.endpoint_clientes, cliente);
+  }
 
 
 }
