@@ -42,12 +42,12 @@
         <tr *ngFor="let orden of ordenes|paginate: {itemsPerPage:10, currentPage:p}">
           <th scope="row">{{ orden.id }}</th>
           <th> {{orden.fecha |date}}</th>
-          <td><a [routerLink]="['/mi-tienda/clientes/',orden.idCliente]">
+          <td><a [routerLink]="['/mi-tienda/clientes/mostrar',orden.idCliente]">
               {{ orden.idCliente }}
             </a>
           </td>
           <td>
-            <a [routerLink]="['/mi-tienda/producto/',orden.idProducto]">
+            <a [routerLink]="['/mi-tienda/productos/mostrar',orden.idProducto]">
               {{ orden.idProducto }}
             </a>
           </td>

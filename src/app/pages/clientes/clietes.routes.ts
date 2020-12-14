@@ -11,7 +11,7 @@ const clietesRoutes: Routes = [
     component: ClientesComponent,
   },
   {
-    path: 'clientes/:id',
+    path: 'clientes/mostrar/:id',
     component: DetalleClienteComponent
   },
 ];
