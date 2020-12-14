@@ -13,7 +13,7 @@
       <div class="form-group">
 
           <label for="idProducto">Producto*</label>
-          <select class="form-control" id="idProducto" formControlName="idProducto">
+          <select class="form-control pill" id="idProducto" formControlName="idProducto">
             <option *ngFor="let producto of productos" [value]="producto.id">
               {{producto.nombre}}</option>
           </select>
@@ -24,7 +24,7 @@
 
      <div class="form-group">
           <label for="idCliente">Cliente*</label>
-          <select class="form-control" id="idCliente" formControlName="idCliente">
+          <select class="form-control pill" id="idCliente" formControlName="idCliente">
             <option   *ngFor="let cliente of clientes" [value]="cliente.id">
               {{cliente.nombre}} {{cliente.apellidos}}</option>
           </select>

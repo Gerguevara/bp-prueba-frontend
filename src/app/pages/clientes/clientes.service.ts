@@ -8,11 +8,10 @@ export class ClientesService {
 
 
   constructor(private http: HttpClient) {
-    console.log(' servicio working');
   }
 
   getClientes(){
-    return this.http.get<Cliente[]>(environment.endpoint_clientes);
+    return this.http.get<Cliente[]>(`${environment.endpoint_clientes}?_sort=nombre&_order=asc`);
   }
 
   getCliente(id: string) {

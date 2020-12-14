@@ -11,8 +11,7 @@ export class ProductosService {
   }
 
   getProductos() {
-    console.log('url', environment.endpoint_productos);
-    return this.http.get<Producto[]>(environment.endpoint_productos);
+    return this.http.get<Producto[]>(`${environment.endpoint_productos}?_sort=nombre&_order=asc`);
   }
 
   getProducto(id: string) {

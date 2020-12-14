@@ -21,7 +21,7 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.router.params.subscribe(params => {
+   this.serve = this.router.params.subscribe(params => {
      this.id = params.id;
      this.getcliente(params.id);
     });

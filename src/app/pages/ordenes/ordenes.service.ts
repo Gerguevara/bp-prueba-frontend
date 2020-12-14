@@ -8,12 +8,9 @@ import { Injectable } from '@angular/core';
 })
 export class OrdenesService {
 
-  constructor(private http: HttpClient) {
-    console.log(' servicio working');
-  }
+  constructor(private http: HttpClient) { }
 
   getOrdenes() {
-    console.log('ordenes url', environment.endpoint_ordenes);
     return this.http.get< Orden[]>(environment.endpoint_ordenes);
   }
 
