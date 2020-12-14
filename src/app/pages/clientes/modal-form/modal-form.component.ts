@@ -12,7 +12,7 @@ export class ModalFormComponent implements OnInit {
 
   error = false;
   form!: FormGroup;
-
+  serverError = false;
   constructor(private cliente: ClientesService, private fb: FormBuilder , public activeModal: NgbActiveModal) {
     this.crearForm();
   }
@@ -33,7 +33,7 @@ export class ModalFormComponent implements OnInit {
     if (!this.form.invalid) {
       this.cliente.crear(this.form.value).subscribe((resp: any) => {
         this.activeModal.close('guardado');
-    });
+    }, (error) => { this.serverError = true });
     } else {
       this.setError();
     }

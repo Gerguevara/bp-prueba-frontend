@@ -33,7 +33,6 @@
         </p>
       </div>
 
-
       <div class="form-group">
         <label for="precio">Cantidad*</label>
         <input type="number" class="form-control pill w-25" id="precio" name="cantidad"
@@ -43,10 +42,12 @@
         </p>
       </div>
 
-
     </form>
     <div class="text-danger mt-5 text-center" role="alert" *ngIf="error">
       El formulario no esta completo!
+    </div>
+    <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="serverError">
+      Ocurrio un error en Servidor Por favor intenta mas tarde.
     </div>
   </div>
   <!-- footer -->

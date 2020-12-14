@@ -18,7 +18,7 @@ export class ModalFormComponent implements OnInit {
   date = new Date();
   clientes: Cliente[] = [];
   productos: Producto[] = [];
-
+  serverError=false
 
   constructor(private ordenesService: OrdenesService, private fb: FormBuilder, public activeModal: NgbActiveModal,
               private clientesService: ClientesService , private productosService: ProductosService) { }
@@ -43,9 +43,8 @@ export class ModalFormComponent implements OnInit {
     if (!this.form.invalid) {
       console.log('valido', this.form.value);
       this.ordenesService.crear(this.form.value).subscribe((resp: any) => {
-        console.log('resp', resp);
         this.activeModal.close('guardado');
-    });
+    }, (error) => { this.serverError = true });
     } else {
       this.setError();
     }
@@ -85,6 +84,5 @@ export class ModalFormComponent implements OnInit {
    get cantidadInvalido() {
     return this.form.get('cantidad')?.invalid && this.form.get('cantidad')?.touched;
   }
-
 
 }

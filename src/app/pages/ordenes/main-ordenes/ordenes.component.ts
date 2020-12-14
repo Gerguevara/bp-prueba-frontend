@@ -28,7 +28,7 @@ export class OrdenesComponent implements OnInit {
   fetchOrdenes(): void {
     this.ordenesService.getOrdenes().subscribe(data => {
       this.ordenes = data;
-    });
+    },(error) => { this.error = true });
   }
 
   // fetch de cliente que cumpla con el parametro nombre

@@ -26,7 +26,7 @@ export class ClientesComponent implements OnInit {
   fetchClientes(): void {
     this.clientesService.getClientes().subscribe(data => {
       this.clientes = data;
-    });
+    },(error) => { this.error = true });
   }
 
   // fetch de cliente que cumpla con el parametro nombre

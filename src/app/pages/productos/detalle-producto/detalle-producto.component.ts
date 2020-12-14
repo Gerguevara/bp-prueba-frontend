@@ -16,6 +16,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   error = false;
   serve!: Subscription;
+  serverError = false
   id = '';
 
 
@@ -34,7 +35,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
   getProducto(id: string): void {
     this.productosService.getProducto(id).subscribe((data: Producto) => {
       this.producto = data;
-    });
+    }, (error) => { this.serverError = true });
   }
 
   crearForm(): void {
@@ -49,7 +50,7 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
     if (!this.form.invalid) {
       this.productosService.editar(this.id, this.form.value).subscribe((resp: any) => {
         this.getProducto(resp.id);
-      });
+      },(error) => { this.serverError = true });
       alert('Actualizado');
     } else {
       this.setError();

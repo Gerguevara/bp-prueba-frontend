@@ -29,6 +29,9 @@
           </p>
         </div>
       </form>
+      <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="serverError">
+        Ocurrio un error en Servidor Por favor intenta mas tarde.
+      </div>
     <div class="mt-5 d-flex justify-content-center">
       <button type="submit" form="CreateForm" class="btn btn-success pill mr-3">Guardar</button>
       <a href="#/mi-tienda/ordenes" class="btn btn-outline-primary pill mr-3">Ver mis ordenes</a>

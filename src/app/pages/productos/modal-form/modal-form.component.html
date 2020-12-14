@@ -36,9 +36,10 @@
           El precio es necesario.
         </p>
       </div>
-
-
     </form>
+    <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="serverError">
+      Ocurrio un error en Servidor Por favor intenta mas tarde.
+    </div>
     <div class="text-danger mt-5 text-center" role="alert" *ngIf="error">
       El formulario no esta completo!
     </div>

@@ -16,6 +16,7 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   serve!: Subscription;
   error = false;
+  serverError= false
   id = '';
   constructor(private clienteService: ClientesService, private router: ActivatedRoute,
               private fb: FormBuilder) { }
@@ -31,7 +32,7 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
   getcliente(id: string): void {
     this.clienteService.getCliente(id).subscribe((data: Cliente) => {
       this.cliente = data;
-    });
+    }, (error) => { this.serverError = true });
   }
 
   crearForm(): void {
@@ -46,7 +47,7 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
     if (!this.form.invalid) {
       this.clienteService.editar(this.id, this.form.value).subscribe((resp: any) => {
         this.getcliente(resp.id);
-      });
+      }, (error) => { this.serverError = true });
       alert('Actualizado');
     } else {
       this.setError();

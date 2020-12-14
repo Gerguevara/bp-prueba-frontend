@@ -31,7 +31,7 @@ export class ProductosComponent implements OnInit {
   fetchProductos(): void {
     this.productoService.getProductos().subscribe(data => {
       this.productos = data;
-    });
+    },(error) => { this.error = true });
   }
 
     // fetch de cliente que cumpla con el parametro nombre
