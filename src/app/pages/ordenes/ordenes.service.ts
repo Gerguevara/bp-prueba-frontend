@@ -1,3 +1,6 @@
+import { Orden } from './../../models/ordenes';
+import { environment } from './../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +8,35 @@ import { Injectable } from '@angular/core';
 })
 export class OrdenesService {
 
-  constructor() { }
+  constructor(private http: HttpClient) {
+    console.log(' servicio working');
+  }
+
+  getOrdenes() {
+    console.log('ordenes url', environment.endpoint_ordenes);
+    return this.http.get< Orden[]>(environment.endpoint_ordenes);
+  }
+
+  getOrden(id: string) {
+    return this.http.get <Orden>(`${environment.endpoint_ordenes}/${id}`);
+  }
+
+
+  filter( termino: string) {
+    return this.http.get< Orden[]>(`${environment.endpoint_ordenes}?fecha=${termino}`);
+  }
+
+  crear(producto: Orden) {
+    return this.http.post(environment.endpoint_ordenes, producto);
+  }
+
+  editar(id: string, producto: Orden) {
+    return this.http.put <Orden>(`${environment.endpoint_ordenes}/${id}`, producto);
+  }
+
+  borrar(id: string) {
+    return this.http.delete(`${environment.endpoint_ordenes}/${id}`);
+  }
+
 }
+

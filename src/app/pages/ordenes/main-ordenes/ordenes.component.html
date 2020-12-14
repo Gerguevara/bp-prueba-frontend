@@ -1,1 +1,72 @@
-<p>ordenes works!</p>
+<div>
+  <!-- Messages -->
+  <div class="alert alert-success d-flex justify-content-center" role="alert" *ngIf="ordenes.length==0">
+    No hay Ningun Registro de Ordenes.
+  </div>
+  <div class="alert alert-danger d-flex justify-content-center" role="alert" *ngIf="error">
+    Ocurrio un erro en Servidor Por favor intenta mas tarde.
+  </div>
+  <!-- Messages -->
+  <!-- header -->
+  <header class="d-md-flex justify-content-between my-4">
+    <div class="ml-4">
+      <p class="h3"> Mi Lista de Ordenes</p>
+    </div>
+
+    <div class="mt-md-3 mb-3 px-3 w-0">
+      <input class="form-control pill" placeholder="Nombre del Producto" type="date" name="searchTerm" id="buscar"
+        [(ngModel)]="termino" (ngModelChange)="buscar()" />
+    </div>
+
+    <div class=" ml-3 mr-md-5">
+      <button class=" btn btn-success pill" (click)="open()">
+        Crear Nueva Orden
+      </button>
+    </div>
+  </header>
+  <!-- header -->
+  <!-- pages table -->
+  <div class="table-responsive px-5" *ngIf="ordenes.length>=1">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID de Orden</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">ID de cliente</th>
+          <th scope="col">ID de Producto</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let orden of ordenes|paginate: {itemsPerPage:10, currentPage:p}">
+          <th scope="row">{{ orden.idOrden }}</th>
+          <th> {{orden.fecha |date}}</th>
+          <td><a [routerLink]="['/mi-tienda/clientes/',orden.idCliente]">
+              {{ orden.idCliente }}
+            </a>
+          </td>
+          <td>
+            <a [routerLink]="['/mi-tienda/producto/',orden.idProducto]">
+              {{ orden.idProducto }}
+            </a>
+          </td>
+          <td>N- {{ orden.cantidad }}</td>
+          <td>
+            <button class="btn-ico text-danger" (click)="deleteOrden(orden.idOrden)">
+              <span class="material-icons">delete</span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- pages table -->
+  <!-- pagination -->
+  <div class="d-flex justify-content-center p-2">
+    <pagination-controls class="my-pagination" (pageChange)="p = $event" (pageBoundsCorrection)="p = $event"
+      previousLabel="Anterior" nextLabel="Siguiente" [autoHide]="true" [responsive]="true">
+    </pagination-controls>
+  </div>
+  <!-- pagination -->
+</div>
