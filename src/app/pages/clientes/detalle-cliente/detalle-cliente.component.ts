@@ -1,18 +1,20 @@
 import { Cliente } from './../../../models/clientes';
 import { ClientesService } from './../clientes.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detalle-cliente',
   templateUrl: './detalle-cliente.component.html',
   styleUrls: ['./detalle-cliente.component.scss']
 })
-export class DetalleClienteComponent implements OnInit {
+export class DetalleClienteComponent implements OnInit, OnDestroy {
 
   cliente: Cliente = { nombre: '', apellidos: '', id: '' };
   form!: FormGroup;
+  serve!: Subscription;
   error = false;
   id = '';
   constructor(private clienteService: ClientesService, private router: ActivatedRoute,
@@ -68,5 +70,11 @@ export class DetalleClienteComponent implements OnInit {
       this.error = false;
     }, 5000);
   }
+
+  ngOnDestroy(): void {
+    this.serve.unsubscribe();
+    console.log('unsubscribe');
+  }
+
 
 }

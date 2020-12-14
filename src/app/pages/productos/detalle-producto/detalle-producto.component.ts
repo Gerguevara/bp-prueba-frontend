@@ -1,19 +1,21 @@
 import { ProductosService } from './../productos.service';
 import { Producto } from 'src/app/models/productos';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detalle-producto',
   templateUrl: './detalle-producto.component.html',
   styleUrls: ['./detalle-producto.component.scss']
 })
-export class DetalleProductoComponent implements OnInit {
+export class DetalleProductoComponent implements OnInit, OnDestroy {
 
   producto: Producto = { nombre: '', descripcion: '', id: '', precio: '0' };
   form!: FormGroup;
   error = false;
+  serve!: Subscription;
   id = '';
 
 
@@ -21,7 +23,7 @@ export class DetalleProductoComponent implements OnInit {
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.router.params.subscribe(params => {
+    this.serve = this.router.params.subscribe(params => {
       this.id = params.id;
       this.getProducto(params.id);
     });
@@ -78,6 +80,10 @@ export class DetalleProductoComponent implements OnInit {
     return this.form.get('precio')?.invalid && this.form.get('precio')?.touched;
   }
 
+  ngOnDestroy(): void {
+    this.serve.unsubscribe();
+    console.log('unsubscribe');
+  }
 
 
 }

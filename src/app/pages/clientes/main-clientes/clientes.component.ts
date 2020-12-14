@@ -41,14 +41,12 @@ export class ClientesComponent implements OnInit {
   }
   // abre modal para crear un cliente
   open(): void {
-    const modalRef = this.modalService.open(ModalFormComponent, { centered: true });
+      const modalRef = this.modalService.open(ModalFormComponent, { centered: true });
+      modalRef.result.then((data) => {
+        this.fetchClientes();
+      }, (reason) => null );
+    }
 
-    modalRef.componentInstance.name = 'Gerardo';
-
-    modalRef.result.then((data) => {
-      this.fetchClientes();
-    });
-  }
 
  // borrar cliente
   deleteCliente(id: string | any): void {

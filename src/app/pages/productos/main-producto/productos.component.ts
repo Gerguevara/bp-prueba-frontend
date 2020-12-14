@@ -3,6 +3,7 @@ import { ProductosService } from './../productos.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalFormComponent } from './../modal-form/modal-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { noop } from 'rxjs';
 
 @Component({
   selector: 'app-productos',
@@ -49,7 +50,7 @@ export class ProductosComponent implements OnInit {
       const modalRef = this.modalService.open(ModalFormComponent, { centered: true });
       modalRef.result.then((data) => {
         this.fetchProductos();
-      });
+      }, (reason) => null );
     }
 
   // borrar cliente
