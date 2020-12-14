@@ -1,7 +1,7 @@
-export interface Orden
-  {
-  id: string;
-  nombre: string;
-  descripcion: string;
-  precio: string;
+export interface Orden {
+  idProducto: string;
+  idCliente: string;
+  idOrden?: string;
+  cantidad: string;
+  fecha: Date;
 }

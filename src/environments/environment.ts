@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   endpoint_clientes: 'http://localhost:3000/clientes',
   endpoint_productos: 'http://localhost:3000/productos',
-  endpoint_ordenes: 'http://localhost:3000/productos',
+  endpoint_ordenes: 'http://localhost:3000/ordenes',
 };
 
 /*

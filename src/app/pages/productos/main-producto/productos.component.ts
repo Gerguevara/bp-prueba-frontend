@@ -3,7 +3,7 @@ import { ProductosService } from './../productos.service';
 import { Component, OnInit } from '@angular/core';
 import { ModalFormComponent } from './../modal-form/modal-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { noop } from 'rxjs';
+
 
 @Component({
   selector: 'app-productos',
