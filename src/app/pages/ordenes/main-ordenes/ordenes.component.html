@@ -40,7 +40,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let orden of ordenes|paginate: {itemsPerPage:10, currentPage:p}">
-          <th scope="row">{{ orden.idOrden }}</th>
+          <th scope="row">{{ orden.id }}</th>
           <th> {{orden.fecha |date}}</th>
           <td><a [routerLink]="['/mi-tienda/clientes/',orden.idCliente]">
               {{ orden.idCliente }}
@@ -53,7 +53,7 @@
           </td>
           <td>N- {{ orden.cantidad }}</td>
           <td>
-            <button class="btn-ico text-danger" (click)="deleteOrden(orden.idOrden)">
+            <button class="btn-ico text-danger" (click)="deleteOrden(orden.id)">
               <span class="material-icons">delete</span>
             </button>
           </td>

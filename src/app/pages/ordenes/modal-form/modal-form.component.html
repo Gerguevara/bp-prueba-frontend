@@ -1,1 +1,59 @@
-<p>modal-form works!</p>
+<ng-container class="modal-container">
+  <!-- header -->
+  <div class="modal-header">
+    <h4 class="modal-title">Nuevar Orden</h4>
+    <button type="button" class="close pill" aria-label="Close" (click)="activeModal.dismiss('cancelled')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+   <!-- header -->
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="guardar()" id="CreateForm">
+
+      <div class="form-group">
+
+          <label for="idProducto">Producto*</label>
+          <select class="form-control" id="idProducto" formControlName="idProducto">
+            <option *ngFor="let producto of productos" [value]="producto.id">
+              {{producto.nombre}}</option>
+          </select>
+        <p class="text-danger ml-1" *ngIf="productoNoValido">
+          Este campo es requerido
+        </p>
+      </div>
+
+     <div class="form-group">
+          <label for="idCliente">Cliente*</label>
+          <select class="form-control" id="idCliente" formControlName="idCliente">
+            <option   *ngFor="let cliente of clientes" [value]="cliente.id">
+              {{cliente.nombre}} {{cliente.apellidos}}</option>
+          </select>
+        <p class="text-danger ml-1" *ngIf="clienteNoValido">
+          Este campo es requerido
+        </p>
+      </div>
+
+
+      <div class="form-group">
+        <label for="precio">Cantidad*</label>
+        <input type="number" class="form-control pill w-25" id="precio" name="cantidad"
+         placeholder="0"  formControlName="cantidad"  >
+        <p class="text-danger ml-1" *ngIf="cantidadInvalido">
+          El precio es necesario.
+        </p>
+      </div>
+
+
+    </form>
+    <div class="text-danger mt-5 text-center" role="alert" *ngIf="error">
+      El formulario no esta completo!
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="modal-footer">
+    <button type="submit" form="CreateForm" class="btn btn-success pill">Crear</button>
+    <button type="button" class="btn btn-outline-dark pill" (click)="activeModal.dismiss('cancelled')"
+     >Cancelar</button>
+  </div>
+  <!-- footer -->
+</ng-container>

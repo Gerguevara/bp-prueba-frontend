@@ -1,3 +1,5 @@
+import { ClientesService } from './../clientes/clientes.service';
+import { ProductosService } from './../productos/productos.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrdenesService } from './ordenes.service';
@@ -17,7 +19,7 @@ import { ModalFormComponent } from './modal-form/modal-form.component';
   declarations: [ OrdenesComponent, DetalletOrdenComponent, ModalFormComponent],
   imports: [CommonModule, ORDENES_ROUTES,  FormsModule, NgxPaginationModule, NgbModalModule, NgbDatepickerModule,
     ReactiveFormsModule],
-  providers: [OrdenesService],
+  providers: [OrdenesService ,ProductosService, ClientesService],
   exports: [ OrdenesComponent, DetalletOrdenComponent]
 })
 export class OrdenesModule { }

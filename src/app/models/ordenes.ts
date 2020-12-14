@@ -1,7 +1,7 @@
 export interface Orden {
+  id?: string;
   idProducto: string;
   idCliente: string;
-  idOrden?: string;
   cantidad: string;
   fecha: Date;
 }
