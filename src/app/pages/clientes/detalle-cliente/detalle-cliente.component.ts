@@ -47,6 +47,7 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
     if (!this.form.invalid) {
       this.clienteService.editar(this.id, this.form.value).subscribe((resp: any) => {
         this.getcliente(resp.id);
+        this.serverError = true;
       }, (error) => { this.serverError = true });
       alert('Actualizado');
     } else {

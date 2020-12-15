@@ -44,7 +44,8 @@ export class ModalFormComponent implements OnInit {
       console.log('valido', this.form.value);
       this.ordenesService.crear(this.form.value).subscribe((resp: any) => {
         this.activeModal.close('guardado');
-    }, (error) => { this.serverError = true });
+        this.error = false;
+      }, (error) => { this.serverError = true; });
     } else {
       this.setError();
     }

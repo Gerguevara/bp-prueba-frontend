@@ -33,7 +33,8 @@ export class ModalFormComponent implements OnInit {
     if (!this.form.invalid) {
       this.cliente.crear(this.form.value).subscribe((resp: any) => {
         this.activeModal.close('guardado');
-    }, (error) => { this.serverError = true });
+        this.serverError = false;
+    }, (error) => { this.serverError = true; });
     } else {
       this.setError();
     }

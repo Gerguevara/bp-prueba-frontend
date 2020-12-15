@@ -50,7 +50,8 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
     if (!this.form.invalid) {
       this.productosService.editar(this.id, this.form.value).subscribe((resp: any) => {
         this.getProducto(resp.id);
-      },(error) => { this.serverError = true });
+        this.serverError = false;
+      }, (error) => { this.serverError = true;});
       alert('Actualizado');
     } else {
       this.setError();
