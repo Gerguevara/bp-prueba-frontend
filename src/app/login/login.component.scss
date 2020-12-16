@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+@import "~src/scss/vars";
 
-$main : #0D703A;
-$secondary: #00A349;
 $gradient : linear-gradient(to right top, #1abe65, #1eb161, #21a55d, #249859, #268c55);
 
 .wrapper{

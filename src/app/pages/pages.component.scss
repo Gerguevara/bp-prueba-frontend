@@ -1,5 +1,6 @@
-$primary:  #212121;
-$ternary: #79C15D;
+@import "~src/scss/vars";
+
+$nav-background:  #212121;
 $bg: #e1f7e7;
 ng-sidebar-container{
   height: 100vh;
@@ -12,7 +13,7 @@ ng-sidebar-container{
  }
 
 .sidebar-content{
-  background:$primary ;
+  background:$nav-background ;
   color: white;
   width: auto;
   height: 100%;
@@ -22,7 +23,7 @@ ng-sidebar-container{
   }
 
   .list-group-item{
-    background:$primary;
+    background:$nav-background;
     border: none;
     font-size: 1.75rem;
 

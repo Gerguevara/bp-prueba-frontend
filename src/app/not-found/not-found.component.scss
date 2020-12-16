@@ -1,8 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500);
+@import "~src/scss/vars";
 
+$white:#fff ;
 .container-fluid {
-  background-color:  #0D703A;;
-  color: #fff;
+  background-color:$main;
+  color: $white;
   font-size: 100%;
   line-height: 1.5;
   font-family: "Roboto", sans-serif;
@@ -12,7 +14,7 @@
 
 .button-main {
   font-weight: 300;
-  color: #fff;
+  color: $white;
   font-size: 1.2em;
   text-decoration: none;
   padding: .5em;
@@ -25,8 +27,8 @@
 
 
   :hover {
-    background-color: #7CBF4B;
-    color: #fff;
+    background-color: $ternary;
+    color: $white;
   }
 }
 

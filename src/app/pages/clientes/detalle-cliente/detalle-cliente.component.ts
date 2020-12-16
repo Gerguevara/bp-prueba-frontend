@@ -16,7 +16,7 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   serve!: Subscription;
   error = false;
-  serverError= false
+  serverError = false;
   id = '';
   constructor(private clienteService: ClientesService, private router: ActivatedRoute,
               private fb: FormBuilder) { }
@@ -26,13 +26,13 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
      this.id = params.id;
      this.getcliente(params.id);
     });
-    this.crearForm();
+   this.crearForm();
   }
 
   getcliente(id: string): void {
     this.clienteService.getCliente(id).subscribe((data: Cliente) => {
       this.cliente = data;
-    }, (error) => { this.serverError = true });
+    }, (error) => { this.serverError = true; });
   }
 
   crearForm(): void {
@@ -42,19 +42,17 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
     });
   }
 
-
   guardar(): void {
     if (!this.form.invalid) {
       this.clienteService.editar(this.id, this.form.value).subscribe((resp: any) => {
         this.getcliente(resp.id);
         this.serverError = false;
-      }, (error) => { this.serverError = true });
+      }, (error) => { this.serverError = true; });
       alert('Actualizado');
     } else {
       this.setError();
     }
   }
-
   // getters validators
   // tslint:disable-next-line: typedef
   get nombreNoValido() {
@@ -72,10 +70,8 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
       this.error = false;
     }, 5000);
   }
-
   ngOnDestroy(): void {
     this.serve.unsubscribe();
   }
-
 
 }
