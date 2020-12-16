@@ -7,7 +7,7 @@ import { Producto } from 'src/app/models/productos';
 export class ProductosService {
 
   constructor(private http: HttpClient) {
-    console.log(' servicio working');
+
   }
 
   getProductos() {

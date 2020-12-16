@@ -20,8 +20,6 @@ export class OrdenesComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchOrdenes();
-    console.log('ordenes', this.ordenes);
-
   }
 
   // hace fetch de todos los clientes

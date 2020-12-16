@@ -48,7 +48,7 @@ export class ModalFormComponent implements OnInit {
 
   // tslint:disable-next-line: typedef
   get apellidoNoValido() {
-    return this.form.get('apellido')?.invalid && this.form.get('apellido')?.touched;
+    return this.form.get('apellidos')?.invalid && this.form.get('apellidos')?.touched;
   }
 
   setError(): void {

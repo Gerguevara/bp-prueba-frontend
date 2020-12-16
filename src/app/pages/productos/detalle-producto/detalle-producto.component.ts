@@ -84,7 +84,6 @@ export class DetalleProductoComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.serve.unsubscribe();
-    console.log('unsubscribe');
   }
 
 

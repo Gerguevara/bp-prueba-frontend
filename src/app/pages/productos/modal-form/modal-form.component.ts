@@ -21,7 +21,7 @@ export class ModalFormComponent {
     this.form = this.fb.group({
       nombre: ['', [Validators.required, Validators.minLength(2)]],
       descripcion: ['', [Validators.required, Validators.minLength(8)]],
-      precio: [0.00, [Validators.required]],
+      precio: [1, [Validators.required]],
     });
   }
 

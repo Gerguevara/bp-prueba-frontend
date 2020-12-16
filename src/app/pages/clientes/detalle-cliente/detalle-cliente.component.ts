@@ -47,7 +47,7 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
     if (!this.form.invalid) {
       this.clienteService.editar(this.id, this.form.value).subscribe((resp: any) => {
         this.getcliente(resp.id);
-        this.serverError = true;
+        this.serverError = false;
       }, (error) => { this.serverError = true });
       alert('Actualizado');
     } else {
@@ -75,7 +75,6 @@ export class DetalleClienteComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.serve.unsubscribe();
-    console.log('unsubscribe');
   }
 
 

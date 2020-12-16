@@ -36,7 +36,6 @@ export class PagesComponent implements OnInit {
 
   toggleSidebar(): void{
     this.opened = !this.opened;
-    console.log(this.opened);
 
   }
 
